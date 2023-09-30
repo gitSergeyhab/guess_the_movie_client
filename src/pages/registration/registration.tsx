@@ -1,54 +1,58 @@
-
 import { Layout, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { API_URL, AppRoute } from '../../const/const';
-import { Messages } from '../../const/messages';
-import { FieldType } from '../../type/field-type';
+import { useDispatch } from 'react-redux';
+import { AnyAction } from '@reduxjs/toolkit';
+import { AppRoute } from '../../const/const';
+import { RegisterFields } from '../../types/field-type';
 import { FormUserName } from '../../components/form-user-name/form-user-name';
 import { FormPassword } from '../../components/form-password/form-password';
 import { FormPasswordRepeat } from '../../components/form-password-repeat/form-password-repeat';
 import { FormSubmit } from '../../components/form-submit/form-submit';
 import { FormAuth } from '../../components/form-auth/form-auth';
+import { registerUser } from '../../store/user-slice/user-thunk';
 
 
 const {Content} = Layout
 const {Title} = Typography;
 
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
-
-
 
 export function Registration() {
 
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
+  const onFinishFailed = (errorInfo: any) => {
+    toast.warn(errorInfo)
+  };
+
   const onSuccess = () => {
-    toast.success('Reg Ok')
-    navigate(AppRoute.Login)
+    setLoading(false)
+    navigate(AppRoute.Login);
   }
   const onError = () => {
-    toast.error('Регистрация недоступна. Пробуйте позже')
+    setLoading(false)
   }
 
-
-  const onFinish = (values: FieldType) => {
-    axios.post(`${API_URL}/user/registration`, values)
-      .then(onSuccess)
-      .catch(onError)
+  const onFinish = (body: RegisterFields) => {
+    setLoading(true)
+    dispatch(registerUser({body, onSuccess, onError}) as unknown as AnyAction)
   }
 
   return (
     <Content className='auth-content'>
       <Title >Регистрация</Title>
-      <FormAuth onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <FormAuth
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        isLoading={isLoading}
+      >
         <FormUserName/>
         <FormPassword/>
         <FormPasswordRepeat/>
-        <FormSubmit text='зарегистрироваться'/>
+        <FormSubmit text='зарегистрироваться' isLoading={isLoading}/>
       </FormAuth>
     </Content>
   )

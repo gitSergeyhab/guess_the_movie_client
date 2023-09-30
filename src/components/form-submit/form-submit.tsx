@@ -2,12 +2,13 @@ import {  Form,  Button } from 'antd';
 
 
 interface IFormUserName {
-  text: string
+  text: string;
+  isLoading: boolean
 }
-export function FormSubmit ({text}: IFormUserName) {
+export function FormSubmit ({text, isLoading}: IFormUserName) {
   return (
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit" loading={isLoading}>
         {text}
       </Button>
     </Form.Item>

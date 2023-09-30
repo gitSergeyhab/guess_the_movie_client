@@ -5,5 +5,6 @@ export const enum AppRoute {
   Main = '/',
   Game = '/game',
   Login = '/login',
-  Registration = '/registration'
+  Registration = '/registration',
+  Exit = '/exit',
 }

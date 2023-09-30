@@ -1,11 +1,11 @@
 import {  Form, Input } from 'antd';
-import { FieldType } from '../../type/field-type';
+import { RegisterFields } from '../../types/field-type';
 import { Messages } from '../../const/messages';
 
 
 export function FormPasswordRepeat () {
   return (
-    <Form.Item<FieldType>
+    <Form.Item<RegisterFields>
       label="Снова пароль"
       name="passwordRepeat"
       rules={[
