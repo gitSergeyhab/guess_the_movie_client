@@ -1,7 +1,6 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+export function LogoSvg () {
+  return (
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1280.000000pt" height="378.000000pt" viewBox="0 0 1280.000000 378.000000"
  preserveAspectRatio="xMidYMid meet">
 <metadata>
@@ -83,3 +82,6 @@ c8 -8 12 -58 12 -160 0 -174 4 -168 -119 -168 -112 0 -111 -1 -111 170 0 173
 159 22 14 168 14 193 1z"/>
 </g>
 </svg>
+
+  )
+}

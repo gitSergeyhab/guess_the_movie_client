@@ -6,8 +6,9 @@ import { loginUser } from "./user-thunk";
 interface InitialState {
   user: User | null;
 }
+
 const initialState: InitialState = {
-  user: null
+  user: null,
 }
 
 export const userSlice = createSlice({

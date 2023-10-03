@@ -7,4 +7,5 @@ export const enum AppRoute {
   Login = '/login',
   Registration = '/registration',
   Exit = '/exit',
+  Admin = '/admin'
 }

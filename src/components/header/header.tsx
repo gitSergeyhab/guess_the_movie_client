@@ -1,11 +1,12 @@
 import { Layout, Menu, MenuProps } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { AppRoute } from "../../const/const";
 import { ReducerType } from '../../store/store';
 import { setUser } from '../../store/user-slice/user-slice';
 import { deleteUserDataFromLS } from '../../utils/storage-utils';
+import { LogoSvg } from '../logo-svg/logo-svg';
 
 
 const { Header } = Layout;
@@ -23,6 +24,7 @@ const loginItem = {
 const defaultPages  = [
   {key: AppRoute.Main, label: 'Главная'},
   {key: AppRoute.Game, label: 'Игра'},
+  {key: AppRoute.Admin, label: 'AdminPage'},
 ]
 
 
@@ -52,8 +54,11 @@ export function TopHeader() {
   const onMenuClick = ({key}: {key: string}) => navigate(key)
 
   return (
-    <Header style={{ display: 'flex', alignItems: 'center' }} >
-      <img src='/assets/img/icon/logo.svg' alt=""  width="200px" height="100px"/>
+    <Header   className='header'  >
+      <Link className='header__logo-link' to={AppRoute.Main}>
+        <LogoSvg/>
+        {/* <img src='/assets/img/icon/logo.svg' alt="logo"   height="60px"/> */}
+      </Link>
 
       <Menu
         style={{width: '100%', justifyContent: 'end'}}
@@ -62,6 +67,7 @@ export function TopHeader() {
         mode="horizontal"
         // defaultSelectedKeys={['2']}
         items={pages}
+
       />
     </Header>
     )

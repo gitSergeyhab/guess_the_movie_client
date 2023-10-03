@@ -28,7 +28,8 @@ export const serverApi = (unauthorize: () => void) => {
         toast.warn('Вы не авторизованны')
         unauthorize();
       }
-      return Promise.reject(error);
+      return error
+      // return Promise.reject(error);
     }
   )
 

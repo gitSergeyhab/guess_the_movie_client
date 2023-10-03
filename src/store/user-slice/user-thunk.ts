@@ -80,3 +80,23 @@ export const fetchUsers = createAsyncThunk<User[]>(
     }
   }
 )
+
+
+
+
+
+export const fetchWorkData = createAsyncThunk<User[]>(
+  'users/fetchWorkData',
+  async () => {
+    try {
+      const {data} = await api.get<User[]>('/users/work');
+      console.log({data})
+      return data
+    } catch (err) {
+      console.error(err)
+      toastErrorMessage(err);
+      return []
+    }
+  }
+)
+
