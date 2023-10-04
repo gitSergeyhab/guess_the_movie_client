@@ -2,12 +2,14 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { cinemaApi } from "../api/api";
 import { userSlice } from "./user-slice/user-slice";
 import { testSlice } from "./test-slice/tests-slice";
+import { adminSlice } from "./admin-slice/admin-slice";
 
 
 const reducer = combineReducers({
   [cinemaApi.reducerPath]: cinemaApi.reducer,
   [userSlice.name]: userSlice.reducer,
   [testSlice.name]: testSlice.reducer,
+  [adminSlice.name]: adminSlice.reducer
 })
 
 export const store = configureStore({

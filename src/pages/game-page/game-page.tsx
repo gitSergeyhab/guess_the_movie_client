@@ -40,8 +40,9 @@ export function GamePage() {
 
   console.log({tests})
   return (
-    <Layout>
-      <Header  style={{ padding: 0, background: colorBgContainer }}>
+    <Layout className='game-page'>
+      {/* <Header style={{ padding: 0, background: colorBgContainer }}> */}
+      <Header>
         GAME
       </Header>
       <QuestionBlock question={question} questionText={questionText}/>
