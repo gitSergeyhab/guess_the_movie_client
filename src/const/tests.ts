@@ -23,3 +23,7 @@ export const enum AnswerType {
   Year = 'Year',
   Slogan = 'Slogan'
 }
+
+
+
+

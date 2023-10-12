@@ -203,3 +203,10 @@ export interface MovieData {
   page:  number;
   pages: number;
 }
+
+
+
+export interface DownloadStatus {
+  isError: boolean;
+  isLoading: boolean;
+}

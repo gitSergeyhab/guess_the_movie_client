@@ -18,10 +18,10 @@ export function App () {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const onError = () => navigate(AppRoute.Login);
-    dispatch(checkAuthUser({onError}) as unknown as AnyAction)
-  }, [dispatch, navigate])
+  // useEffect(() => {
+  //   const onError = () => navigate(AppRoute.Login);
+  //   dispatch(checkAuthUser({onError}) as unknown as AnyAction)
+  // }, [dispatch, navigate])
 
 
   return (

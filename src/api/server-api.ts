@@ -9,7 +9,7 @@ import { readTokenFromLS } from "../utils/storage-utils"
 export const serverApi = (unauthorize: () => void) => {
   const api = axios.create({
     baseURL: process.env.API_URL || API_URL,
-    timeout: 5000,
+    timeout: 50000,
   })
 
   api.interceptors.request.use((config) => {
@@ -28,8 +28,8 @@ export const serverApi = (unauthorize: () => void) => {
         toast.warn('Вы не авторизованны')
         unauthorize();
       }
-      return error
-      // return Promise.reject(error);
+      // return error
+      return Promise.reject(error);
     }
   )
 

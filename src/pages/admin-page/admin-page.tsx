@@ -1,57 +1,60 @@
-import {useState} from 'react'
-import { Breadcrumb, Layout, theme, Button, Space } from 'antd';
-import { PoweroffOutlined } from '@ant-design/icons';
+import {useEffect} from 'react'
+import { Layout } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
 import { ReducerType } from '../../store/store';
-import { writeRusTests } from '../../store/admin-slice/admin-thunk';
+import {  OperationAction, OperationCategory, OperationContent } from '../../const/admin-const';
+import { AdminTabs } from '../../components/admin-tabs/admin-tabs';
+import { readData } from '../../store/admin-slice/admin-thunk';
+import { fetchDataStats } from '../../store/stats-slice/stats-thunk';
+
+
+
 
 
 
 
 export function AdminPage () {
 
-  const {isTestsUploadError, isTestsUploading} = useSelector((state: ReducerType) => state.adminSlice);
-  const dispatch = useDispatch()
+  const {
+    isError, isLoading,
+    processAction, processCategory, processContent
+  } = useSelector((state: ReducerType) => state.adminSlice);
 
-  const handleWriteRusTestsButtonClick = () => {
-    dispatch(writeRusTests() as unknown as AnyAction)
-  }
+  const dispatch = useDispatch()
+  useEffect (() => {
+    dispatch(readData(
+      {action: OperationAction.Write, category: OperationCategory.Rus, content: OperationContent.Movies}
+      ) as unknown as AnyAction)
+
+  }, [dispatch])
+
+
+  useEffect (() => {
+    dispatch(fetchDataStats() as unknown as AnyAction)
+  }, [dispatch])
+
+
+  // const handleWriteRusTestsButtonClick = () => {
+  //   dispatch(writeTests(MovieCategory.World) as unknown as AnyAction)
+  // }
+
+  console.log({
+    isError, isLoading,
+    processAction, processCategory, processContent
+  })
+
+
+
 
 
   return (
-    <Layout >
-
-      <Layout>
-        <div>
-          {isTestsUploadError ? 'Error' : '...'}
-          {/* <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb> */}
-          <div style={{ padding: 24, minHeight: 360, background: '#FFF' }}>
-          <Space wrap>
-        <Button type="primary" loading={isTestsUploading} onClick={handleWriteRusTestsButtonClick}>
-          Записать тесты по русским фильмам
-        </Button>
-        {/* <Button
-          type="primary"
-          icon={<PoweroffOutlined />}
-          loading={loadings[1]}
-          onClick={() => enterLoading(1)}
-        >
-          Click me!
-        </Button>
-        <Button
-          type="primary"
-          icon={<PoweroffOutlined />}
-          loading={loadings[2]}
-          onClick={() => enterLoading(2)}
-        /> */}
-      </Space>
-          </div>
-        </div>
-      </Layout>
+    <Layout className='admin-page'>
+      {/* <div style={{ padding: 24, minHeight: 360, background: '#FFF' }}> */}
+        <AdminTabs/>
+      {/* </div> */}
     </Layout>
   );
 }
+
+
