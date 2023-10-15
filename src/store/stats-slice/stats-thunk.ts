@@ -3,7 +3,7 @@ import { api } from "../..";
 import { toastErrorMessage } from "../../utils/error-utils";
 import { DataStat } from "../../types/stats";
 
-export const fetchDataStats = createAsyncThunk<DataStat[]|null>(
+export const fetchDataStats = createAsyncThunk<DataStat[]>(
   'stats/fetchData',
   async () => {
     try {

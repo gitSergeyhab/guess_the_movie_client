@@ -1,14 +1,7 @@
-import {Table, Col, Row, Space, Tag} from 'antd'
-import type { ColumnsType } from 'antd/es/table';
+import {Table, Col, Row} from 'antd'
 import { useSelector } from 'react-redux'
 import { ReducerType } from '../../store/store'
-import { OperationCategory, OperationContent } from '../../const/admin-const';
 import { DataStat } from '../../types/stats';
-
-
-
-
-
 
 
 
@@ -35,7 +28,6 @@ const columns= [
   },
 
 ];
-
 
 
 const getTableData = (data: DataStat[]) => data.map((item) => ({...item, key: item.content}))

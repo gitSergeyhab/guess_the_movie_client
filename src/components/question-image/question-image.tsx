@@ -1,9 +1,9 @@
 import { Image } from 'antd';
-import { IVariant } from '../../types/question-type';
+import { Question } from '../../types/game-types';
 
 
 
-export function QuestionImage ({question}: {question: IVariant}) {
+export function QuestionImage ({question}: {question: Question}) {
 
   const { imageUrl, name} = question;
 

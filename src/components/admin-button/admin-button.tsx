@@ -47,6 +47,7 @@ export function AdminButton ({action, category, content, text}: AdminButtonProps
       loading={isButtonLoading}
       onClick={handleWriteRusTestsButtonClick}
       danger={action === OperationAction.Delete}
+      disabled={isLoading}
       >
       {text}
     </Button>

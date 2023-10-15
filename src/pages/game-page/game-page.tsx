@@ -1,11 +1,11 @@
-import { useEffect, ReactNode  } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AnyAction } from '@reduxjs/toolkit'
-import {  Layout, theme } from 'antd';
+import { ReactNode  } from 'react'
+import {  useSelector } from 'react-redux'
+// import { AnyAction } from '@reduxjs/toolkit'
+import {  Layout } from 'antd';
 import { ReducerType } from '../../store/store';
-import { fetchTests } from '../../store/test-slice/tests-thunk';
+// import { fetchTests } from '../../store/test-slice/tests-thunk';
 import { QuestionBlock } from '../../components/question-block/question-block';
-import { VariantButton } from '../../components/variant-button/variant-button';
+// import { VariantButton } from '../../components/variant-button/variant-button';
 
 
 const { Header } = Layout;
@@ -20,9 +20,9 @@ export function VariantList ({children} : {children: ReactNode }) {
 
 export function GamePage() {
 
-  const {token: { colorBgContainer }} = theme.useToken();
+  // const {token: { colorBgContainer }} = theme.useToken();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(fetchTests() as unknown as AnyAction)
@@ -34,9 +34,9 @@ export function GamePage() {
   }
 
 
-  const {question, questionText, variants} = tests[0];
+  const {question, questionText} = tests[0];
 
-  const variantElements = variants.map((item) => <VariantButton key={item.id} variant={item}/>)
+  // const variantElements = variants.map((item) => <VariantButton testId={item.id}  key={item.id} variant={item}/>)
 
   console.log({tests})
   return (
@@ -48,7 +48,7 @@ export function GamePage() {
       <QuestionBlock question={question} questionText={questionText}/>
       <div className='variant'>
           <VariantList>
-          {variantElements}
+          {/* {variantElements} */}
           </VariantList>
       </div>
     </Layout>

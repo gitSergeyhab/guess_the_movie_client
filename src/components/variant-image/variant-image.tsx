@@ -1,11 +1,11 @@
-import { IVariant } from '../../types/question-type';
+import { Variant } from '../../types/game-types';
 import { getVariantText } from '../../utils/component-utils';
 
 
 
-export function VariantImage ({variant}: {variant: IVariant}) {
+export function VariantImage ({variant}: {variant: Variant}) {
 
-  const { imageUrl, name} = variant;
+  const { name, imageUrl} = variant;
   const variantText = getVariantText(variant);
 
   return (

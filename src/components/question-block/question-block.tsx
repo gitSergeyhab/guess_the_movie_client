@@ -1,10 +1,10 @@
-import { IVariant } from "../../types/question-type";
+import { Question } from "../../types/game-types";
 import { QuestionImage } from "../question-image/question-image";
 import { QuestionText } from '../question-text/question-text';
 
 
 interface QuestionBlockProps {
-  question: IVariant;
+  question: Question;
   questionText: string;
 }
 export function QuestionBlock ({question, questionText}: QuestionBlockProps) {

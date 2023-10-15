@@ -4,6 +4,7 @@ import { userSlice } from "./user-slice/user-slice";
 import { testSlice } from "./test-slice/tests-slice";
 import { adminSlice } from "./admin-slice/admin-slice";
 import { statsSlice } from "./stats-slice/stats-slice";
+import { singlePlayerGameSlice } from "./single-player-game-slice/single-player-game-slice";
 
 
 const reducer = combineReducers({
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   [testSlice.name]: testSlice.reducer,
   [adminSlice.name]: adminSlice.reducer,
   [statsSlice.name]: statsSlice.reducer,
+  [singlePlayerGameSlice.name]: singlePlayerGameSlice.reducer,
 })
 
 export const store = configureStore({

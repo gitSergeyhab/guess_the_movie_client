@@ -1,13 +1,13 @@
 import { Typography } from 'antd';
-import { IVariant } from '../../types/question-type';
 import { getVariantText } from '../../utils/component-utils';
+import { Question } from '../../types/game-types';
 
 
 
 const {Paragraph, Title} = Typography;
 
 interface QuestionTextProps {
-  question: IVariant,
+  question: Question,
   questionText: string
 }
 

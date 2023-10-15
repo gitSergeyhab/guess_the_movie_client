@@ -12,6 +12,7 @@ import { Registration } from "../pages/registration/registration";
 import { checkAuthUser } from "../store/user-slice/user-thunk";
 import { AdminPage } from "../pages/admin-page/admin-page";
 import { GamePage } from "../pages/game-page/game-page";
+import { SinglePlayerGamePage } from "../pages/single-player-game-page/single-player-game-page";
 
 const { Footer, Sider } = Layout;
 export function App () {
@@ -36,7 +37,7 @@ export function App () {
         <Layout>
           <Routes>
             <Route path={AppRoute.Main} element={<Main />}/>
-            <Route path={AppRoute.Game} element={<GamePage />}/>
+            <Route path={AppRoute.Game} element={<SinglePlayerGamePage />}/>
             <Route path={AppRoute.Login} element={<Login />}/>
             <Route path={AppRoute.Registration} element={<Registration />}/>
             <Route path={AppRoute.Exit} element={<Navigate to={AppRoute.Main} replace />}/>
