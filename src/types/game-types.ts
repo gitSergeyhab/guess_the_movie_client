@@ -1,4 +1,5 @@
 import { OperationCategory } from "../const/admin-const";
+import { GameStatus } from "../const/game-const";
 
 export enum TestType {
   FrameByMovie = "FrameByMovie",
@@ -39,4 +40,31 @@ export interface TestFromServer {
   testType:     TestType;
   createdAt:    Date;
   updatedAt:    Date;
+}
+
+
+
+export type GameResult = 'RIGHT'|'WRONG'|'SKIP';
+
+
+export interface SinglePlayerGame {
+  gameId: string|null;
+  category: OperationCategory;
+  level: number;
+  status: GameStatus;
+  points: number;
+  skips: number;
+  lives: number;
+  results: GameResult[][];
+  currentTestNumber: number;
+}
+
+export interface SinglePlayerGameStartData {
+  game: SinglePlayerGame;
+  tests: TestFromServer[]
+}
+
+export interface SinglePlayerGameCheckAnswerData {
+  game: SinglePlayerGame;
+  rightAnswer: string|number;
 }

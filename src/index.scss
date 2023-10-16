@@ -139,10 +139,37 @@
   cursor: pointer;
   height: 100%;
 
+  // box-shadow: 2px 2px 14px #2a0898;
+
   &:hover {
-    box-shadow: 2px 2px 4px #0000007c;
+    box-shadow: 0 0 8px #000000;
   }
   transition: box-shadow .3s ease-in-out;
+  // transition-delay: 2s;
+
+  &--right {
+    box-shadow: 0 0 16px #5daf00;
+    cursor: auto;
+    &:hover {
+      box-shadow: 0 0 16px #5daf00;
+    }
+  }
+
+  &--chosen-right {
+    box-shadow: 0 0 16px #5daf00;
+    cursor: auto;
+    &:hover {
+      box-shadow: 0 0 16px #5daf00;
+    }
+  }
+
+  &--chosen-wrong {
+    box-shadow: 0 0 24px #670000;
+    cursor: auto;
+    &:hover {
+      box-shadow: 0 0 24px #670000;
+    }
+  }
 }
 
 .variant {
