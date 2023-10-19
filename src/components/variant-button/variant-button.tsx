@@ -7,6 +7,7 @@ import { VariantImage } from "../variant-image/variant-image";
 import { checkSinglePlayerAnswer } from "../../store/single-player-game-slice/single-player-game-thunk";
 import { ReducerType } from "../../store/store";
 
+import './variant-button.scss'
 
 
 interface GetClasses {

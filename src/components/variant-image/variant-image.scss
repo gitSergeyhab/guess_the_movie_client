@@ -1,0 +1,13 @@
+.variant__image {
+  max-height: 300px;
+  max-width: 300px;
+
+  object-fit: cover;
+
+
+  @media (max-width: 800px) {
+    min-width: 100px;
+    max-width: 100%;
+    height: auto;
+  }
+}

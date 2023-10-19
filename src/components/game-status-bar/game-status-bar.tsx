@@ -2,6 +2,8 @@ import { HeartTwoTone , QuestionCircleOutlined, RightSquareTwoTone, RiseOutlined
 import { useSelector } from "react-redux";
 import { ReducerType } from "../../store/store";
 
+import './game-status-bar.scss'
+
 export function GameStatusBar () {
 
   const {currentTestNumber, level, lives, points, skips, tests} = useSelector((state: ReducerType) => state.singlePlayerGameSlice)

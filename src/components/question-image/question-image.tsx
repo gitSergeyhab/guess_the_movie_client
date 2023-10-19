@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux';
 import { Question, TestType } from '../../types/game-types';
 import { setTestImagesLoaded } from '../../store/game-visual-slice/game-visual-slice';
 
+import './question-image.scss'
+
+
 const getQuestionBlockClasses = (questionType: TestType) => {
   switch (questionType) {
     case TestType.MovieByFrame: return 'question-container question-container--big-image';// ok

@@ -4,6 +4,7 @@ import { Variant } from '../../types/game-types';
 import { getVariantText } from '../../utils/component-utils';
 import { setTestImagesLoaded } from '../../store/game-visual-slice/game-visual-slice';
 
+import './variant-image.scss'
 
 
 export function VariantImage ({variant}: {variant: Variant}) {
@@ -16,17 +17,14 @@ export function VariantImage ({variant}: {variant: Variant}) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log({imageUrl}, 'VariantImage useEffect', {id, isImgLoaded})
     if (imageUrl) {
 
       dispatch(setTestImagesLoaded({id, value: isImgLoaded }))
     }
-    return () => 'VariantImage unmount'
   },[ dispatch, id, imageUrl, isImgLoaded ])
 
 
   const handleLImgLoaded = () => {
-    console.log('VariantImage', 'setImgLoaded(true)', {isImgLoaded})
     setImgLoaded(true)
 
   };

@@ -1,0 +1,29 @@
+.question__title {
+  margin: 0 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: inherit !important;
+}
+
+.question__text {
+  padding-top: 1rem;
+  font-size: inherit
+}
+
+.question__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 2;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+
+
+  @media (max-width: 1200px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 1rem;
+  }
+}

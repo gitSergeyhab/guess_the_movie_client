@@ -1,0 +1,68 @@
+.variant__figure {
+  margin: 0;
+}
+
+.variant__button {
+  cursor: pointer;
+  height: 100%;
+  font-weight: 700;
+  padding: .5rem;
+
+
+
+  &:disabled {
+    color: #000;
+    opacity: .7;
+    cursor: default;
+  }
+
+  @media (max-width: 800px) {
+    padding: .25rem;
+  }
+
+  &:hover {
+    box-shadow: 0 0 4px #00000077;
+  }
+  transition: box-shadow .3s ease-in-out;
+
+  &--chosen {
+    box-shadow: 0 0 16px #00000077;
+    &:hover {
+      box-shadow: 0 0 16px #00000077;
+    }
+    &:disabled {
+      opacity: 1;
+
+    }
+  }
+
+  &--right {
+    box-shadow: 0 0 16px #0258f8;
+    &:hover {
+      box-shadow: 0 0 16px #0258f8;
+    }
+    &:disabled {
+      opacity: 1;
+    }
+  }
+
+  &--chosen-right {
+    box-shadow: 0 0 16px #069b01;
+    &:hover {
+      box-shadow: 0 0 16px #069b01;
+    }
+    &:disabled {
+      opacity: 1;
+    }
+  }
+
+  &--chosen-wrong {
+    box-shadow: 0 0 24px #670000;
+    &:hover {
+      box-shadow: 0 0 24px #670000;
+    }
+    &:disabled {
+      opacity: 1;
+    }
+  }
+}

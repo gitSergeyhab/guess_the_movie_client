@@ -6,6 +6,7 @@ import { GameStatusBar } from '../../components/game-status-bar/game-status-bar'
 import { ReducerType } from '../../store/store';
 import { GameStatus } from '../../const/game-const';
 
+import './single-player-game-page.scss'
 
 export function SinglePlayerGamePage() {
   const {status} = useSelector((state: ReducerType) => state.singlePlayerGameSlice)

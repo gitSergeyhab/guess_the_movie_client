@@ -2,7 +2,7 @@ import { Typography } from 'antd';
 import { getVariantText } from '../../utils/component-utils';
 import { Question } from '../../types/game-types';
 
-
+import './question-text.scss'
 
 const {Paragraph, Title} = Typography;
 

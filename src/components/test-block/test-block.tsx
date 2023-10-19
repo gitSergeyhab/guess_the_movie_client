@@ -6,6 +6,8 @@ import { QuestionBlock } from "../question-block/question-block";
 import { ButtonNextTest } from "../button-next-test/button-next-test";
 import { ReducerType } from "../../store/store";
 
+import './test-block.scss'
+
 interface TestBlockProps {
   test: TestFromServer;
 }

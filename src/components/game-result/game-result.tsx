@@ -2,6 +2,9 @@ import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { ReducerType } from "../../store/store";
 
+
+import './game-result.scss'
+
 export function GameResult ({children, title}: {children: ReactNode, title: string}) {
   const {points} = useSelector((state: ReducerType) => state.singlePlayerGameSlice);
 

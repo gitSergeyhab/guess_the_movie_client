@@ -7,7 +7,7 @@ import { ReducerType } from '../../store/store';
 import { setUser } from '../../store/user-slice/user-slice';
 import { deleteUserDataFromLS } from '../../utils/storage-utils';
 import { LogoSvg } from '../logo-svg/logo-svg';
-
+import './header.scss';
 
 const { Header } = Layout;
 
