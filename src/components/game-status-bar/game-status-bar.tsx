@@ -8,8 +8,8 @@ export function GameStatusBar () {
 
 
   return (
-    <div className="game__status-bar">
-      <div>
+    <div className="game__status-bar status-bar">
+      <div className="status-bar__block">
         <RightSquareTwoTone />
         {skips}
       </div>
@@ -18,8 +18,8 @@ export function GameStatusBar () {
          {lives}
       </div>
 
-      <div> <RiseOutlined/>level: {level}</div>
-      <div><QuestionCircleOutlined /> {currentTestNumber} / {tests.length}</div>
+      <div> <RiseOutlined/>lvl {level + 1}</div>
+      <div><QuestionCircleOutlined /> {currentTestNumber + 1} / {tests.length}</div>
       <div> <StarOutlined />points:  {points}</div>
     </div>
   )

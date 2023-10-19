@@ -1,4 +1,4 @@
-import { Question } from "../../types/game-types";
+import { Question, TestType } from "../../types/game-types";
 import { QuestionImage } from "../question-image/question-image";
 import { QuestionText } from '../question-text/question-text';
 
@@ -6,18 +6,35 @@ import { QuestionText } from '../question-text/question-text';
 interface QuestionBlockProps {
   question: Question;
   questionText: string;
+  testType: TestType
 }
-export function QuestionBlock ({question, questionText}: QuestionBlockProps) {
+
+
+export function QuestionBlock ({question, questionText, testType}: QuestionBlockProps) {
   const {imageUrl} = question;
-  const imageElement = imageUrl ? <QuestionImage question={question} /> : null;
+
+
+
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(setQuestionShown(!imageUrl))
+  // }, [dispatch, imageUrl]
+  // )
+
+
+  const imageElement = imageUrl
+    ? <QuestionImage
+        question={question}
+        testType={testType}
+      /> : null;
+
 
   return (
     <div >
-      <div className='question-container'>
       <QuestionText question={question} questionText={questionText}/>
       {imageElement}
-      </div>
     </div>
+
   )
 
 

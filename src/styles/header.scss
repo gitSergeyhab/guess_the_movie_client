@@ -1,0 +1,26 @@
+
+
+.header {
+  display: flex;
+  align-items: center;
+  height: '7vh';
+}
+
+.header__logo-link {
+  display: flex;
+  width: 170px;
+  height: 64px;
+  padding: 4px;
+
+  & svg {
+    height: 56px;
+  }
+
+  & g {
+    transition: fill 0.3s ease-in-out;
+  }
+
+  &:hover g {
+    fill: rgb(86, 15, 15);
+  }
+}

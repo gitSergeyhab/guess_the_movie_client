@@ -2,7 +2,7 @@ import {  Layout } from 'antd';
 import { useSelector } from 'react-redux';
 import { SinglePlayerGameContent } from '../../components/single-player-game-content/single-player-game-content';
 import { GameStatusBar } from '../../components/game-status-bar/game-status-bar';
-import { MessageTestCheck } from '../../components/message-test-check/message-test-check';
+// import { MessageTestCheck } from '../../components/message-test-check/message-test-check';
 import { ReducerType } from '../../store/store';
 import { GameStatus } from '../../const/game-const';
 
@@ -14,8 +14,7 @@ export function SinglePlayerGamePage() {
     <GameStatusBar/> : null;
 
   return (
-    <Layout className='game-page'>
-      <MessageTestCheck/>
+    <Layout className='game-page'  >
         {gameStatusBar}
       <SinglePlayerGameContent/>
     </Layout>

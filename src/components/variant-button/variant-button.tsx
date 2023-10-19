@@ -6,22 +6,26 @@ import { getVariantText } from "../../utils/component-utils";
 import { VariantImage } from "../variant-image/variant-image";
 import { checkSinglePlayerAnswer } from "../../store/single-player-game-slice/single-player-game-thunk";
 import { ReducerType } from "../../store/store";
-// import { setAnswerCorrect } from "../../store/single-player-game-slice/single-player-game-slice";
 
 
 
-const getClasses = ({isRightVariant, rightAnswer, isChosen}:
-  {rightAnswer:string|number|null, isRightVariant: boolean, isChosen:boolean}) => {
-  if (rightAnswer === null) {
-    return 'variant__button'
+interface GetClasses {
+  rightAnswer:string|number|null;
+  isChosen:boolean;
+  id: string|number;
+}
+const getAdditionClass = ({id, rightAnswer, isChosen}: GetClasses) => {
+  const isRightVariant = String(rightAnswer) === String(id);
+  if (rightAnswer === null ) {
+    return isChosen ? 'chosen' : '';
   }
   if (isChosen) {
-    return isRightVariant ? 'variant__button variant__button--chosen-right' : 'variant__button variant__button--chosen-wrong'
-
+    return isRightVariant ? 'chosen-right' : 'chosen-wrong';
   }
-  return isRightVariant ? 'variant__button variant__button--right' : 'variant__button variant__button--wrong'
-
+  return isRightVariant ? 'right' : 'wrong';
 }
+
+const getClasses = ({id, rightAnswer, isChosen}: GetClasses) => `variant__button variant__button--${getAdditionClass({id, rightAnswer, isChosen})}`
 
 interface VariantButtonProps {
   variant: Variant,
@@ -30,31 +34,25 @@ interface VariantButtonProps {
 export function VariantButton ({variant, testId}: VariantButtonProps) {
 
   const [isChosen, setChosen] = useState(false)
-
   const dispatch = useDispatch()
-  const { gameId, rightAnswer} = useSelector((state: ReducerType) => state.singlePlayerGameSlice)
+  const { gameId, rightAnswer, isChecking} = useSelector((state: ReducerType) => state.singlePlayerGameSlice)
   const { imageUrl, id } = variant;
   const variantText = imageUrl ?  null : getVariantText(variant);
   const image = imageUrl ? <VariantImage variant={variant}/> : null;
-
-  const isRightVariant = String(rightAnswer) === String(id);
-
-  const btnClasses = getClasses({rightAnswer, isRightVariant, isChosen});
-
+  const btnClasses = getClasses({rightAnswer, isChosen, id});
 
   const handleButtonClick = () => {
-    console.log({answerId: id, testId})
-    // dispatch(setAnswerCorrect(null));
     setChosen(true);
-    dispatch(checkSinglePlayerAnswer({answerId: id, testId, gameId}) as unknown as AnyAction)
+    dispatch(checkSinglePlayerAnswer({answerId: id, testId, gameId}) as unknown as AnyAction);
   }
+
   return (
     <li>
       <button
         type="button"
         className={btnClasses}
         onClick={handleButtonClick}
-        disabled={!!rightAnswer}
+        disabled={isChecking || !!rightAnswer}
       >
         {variantText}
         {image}
