@@ -1,6 +1,8 @@
 import { HeartTwoTone , QuestionCircleOutlined, RightSquareTwoTone, RiseOutlined, StarOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { ReducerType } from "../../store/store";
+import { GameStatus } from "../game-status/game-status";
+
 
 import './game-status-bar.scss'
 
@@ -11,6 +13,7 @@ export function GameStatusBar () {
 
   return (
     <div className="game__status-bar status-bar">
+      <GameStatus/>
       <div className="status-bar__block">
         <RightSquareTwoTone />
         {skips}

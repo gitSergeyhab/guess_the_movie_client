@@ -10,6 +10,7 @@ interface InitialState extends SinglePlayerGame {
   nextTest: SinglePlayerGame|null;
   rightAnswer: string|number|null;
   isChecking: boolean;
+  isDataLoading: boolean;
 }
 
 const initialState: InitialState = {
@@ -19,6 +20,7 @@ const initialState: InitialState = {
   points: 0,
   level: 0,
   isChecking: false,
+  isDataLoading: false,
   lives: 0,
   skips: 0,
   category: OperationCategory.All,
@@ -94,12 +96,15 @@ export const singlePlayerGameSlice = createSlice({
         state.gameId = gameId;
       }
       state.tests = payload?.tests || [];
+      state.isDataLoading = false;
     })
     .addCase(fetchStartGameData.pending, (state) => {
       state.status = GameStatus.Starting;
+      state.isDataLoading = true;
     })
     .addCase(fetchStartGameData.rejected, (state) => {
       state.status = GameStatus.Error;
+      state.isDataLoading = false;
     })
     .addCase(checkSinglePlayerAnswer.fulfilled, (state) => {
       state.isChecking = false;
@@ -112,25 +117,25 @@ export const singlePlayerGameSlice = createSlice({
       state.status = GameStatus.Error;
     })
 
-    .addCase(skipSinglePlayerTest.fulfilled, (state) => {
-      state.isChecking = false;
-    })
-    .addCase(skipSinglePlayerTest.pending, (state) => {
-      state.isChecking = true;
-    })
+    // .addCase(skipSinglePlayerTest.fulfilled, (state) => {
+    //   state.isChecking = false;
+    // })
+    // .addCase(skipSinglePlayerTest.pending, (state) => {
+    //   state.isChecking = true;
+    // })
     .addCase(skipSinglePlayerTest.rejected, (state) => {
-      state.isChecking = false;
+      // state.isChecking = false;
       state.status = GameStatus.Error;
     })
     .addCase(startNewLvl.fulfilled, (state) => {
-      state.isChecking = false;
+      state.isDataLoading = false;
       state.status = GameStatus.Active;
     })
     .addCase(startNewLvl.pending, (state) => {
-      state.isChecking = true;
+      state.isDataLoading = true;
     })
     .addCase(startNewLvl.rejected, (state) => {
-      state.isChecking = false;
+      state.isDataLoading = false;
       state.status = GameStatus.Error;
     })
 })

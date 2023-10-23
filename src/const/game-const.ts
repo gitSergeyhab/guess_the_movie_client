@@ -8,3 +8,9 @@ export const enum GameStatus {
   None = 'None',
   Starting = 'Starting'
 }
+
+export const enum TestResult {
+  RIGHT = 'RIGHT',
+  WRONG = 'WRONG',
+  SKIP = 'SKIP'
+}

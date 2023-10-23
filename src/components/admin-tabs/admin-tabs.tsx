@@ -23,7 +23,6 @@ export function AdminTabs () {
     <Tabs
       type="card"
       items={TabContent}
-
     />
   );
 }

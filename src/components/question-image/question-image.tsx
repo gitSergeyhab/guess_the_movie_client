@@ -17,7 +17,6 @@ const getQuestionBlockClasses = (questionType: TestType) => {
     case TestType.PersonByPhoto: return 'question-container question-container--middle-image';// ok
     default: return 'question-container' // ok
   }
-  // fr b mo
 }
 
 
@@ -25,42 +24,33 @@ const getQuestionBlockClasses = (questionType: TestType) => {
 interface QuestionImageProps {
   question: Question;
   testType: TestType;
-
-
 }
+
 export function QuestionImage ({question, testType}: QuestionImageProps) {
-
   const { imageUrl, name, } = question;
-
   const dispatch = useDispatch()
   const [isImgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
-    console.log('QuestionImage useEffect setImgLoaded(false)')
+    // console.log('QuestionImage useEffect setImgLoaded(false)')
     setImgLoaded(false)
   },[imageUrl]); // почему то автоматически не сбрасывается
 
   useEffect(() => {
-
     if (imageUrl) {
-
       setTimeout(() =>{
-        console.log({imageUrl}, 'QuestionImage useEffect', { isImgLoaded})
+        // console.log({imageUrl}, 'QuestionImage useEffect', { isImgLoaded})
         dispatch(setTestImagesLoaded({id: 'questionImg', value: isImgLoaded }))
       })
-
     }
   },[ dispatch, imageUrl, isImgLoaded ])
 
-
-
   const handleLImgLoaded = () => {
-    console.log({imageUrl}, 'QuestionImage handleLImgLoaded', { isImgLoaded})
+    // console.log({imageUrl}, 'QuestionImage handleLImgLoaded', { isImgLoaded})
     setImgLoaded(true)
   };
 
   const classes = getQuestionBlockClasses(testType);
-
 
   return (
     <div className={classes}>

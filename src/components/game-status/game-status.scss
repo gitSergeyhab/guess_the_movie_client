@@ -1,0 +1,10 @@
+.status-bar__status {
+  margin-right: auto;
+  font-style: italic;
+  height: 19.3px;
+  @media(max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

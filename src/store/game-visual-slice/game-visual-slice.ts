@@ -17,7 +17,7 @@ export const gameVisualSlice = createSlice({
   name: 'gameVisualSlice',
   reducers: {
     resetTest(state) {
-      state.isTestLoaded = false;
+      // state.isTestLoaded = false;
       state.dictImageLoadStatus = {}
     },
 
