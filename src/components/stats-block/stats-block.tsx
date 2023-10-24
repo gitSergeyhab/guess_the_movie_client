@@ -1,53 +1,29 @@
 import {Table, Col, Row} from 'antd'
-import { useSelector } from 'react-redux'
-import { ReducerType } from '../../store/store'
-import { DataStat } from '../../types/stats';
 
 
+interface IContent {
+  key: string;
+  content?: string;
+  testType?: string;
+  world: number;
+  ussr: number;
+  rus: number;
+}
 
-const columns= [
-  {
-    title: 'Контент',
-    dataIndex: 'content',
-    key: 'content',
-  },
-  {
-    title: 'Мир',
-    dataIndex: 'world',
-    key: 'world',
-  },
-  {
-    title: 'СССР',
-    dataIndex: 'ussr',
-    key: 'ussr',
-  },
-  {
-    title: 'Россия',
-    dataIndex: 'rus',
-    key: 'rus',
-  },
-
-];
-
-
-const getTableData = (data: DataStat[]) => data.map((item) => ({...item, key: item.content}))
-
-export function StatsBlock () {
-
-  const {data, dataStatsStatus} = useSelector((state: ReducerType) => state.statsSlice);
-
-  if (dataStatsStatus.isLoading) {
-    return <h2>Loading...</h2>
-  }
-
-  if (dataStatsStatus.isError || !data) {
-    return <h2>Error !</h2>
-  }
-
+interface IColumns {
+  title: string;
+  dataIndex: string;
+  key: string;
+}
+interface StatsBlockProps {
+  dataSource: IContent[],
+  columns: IColumns[]
+}
+export function StatsBlock ({columns, dataSource}: StatsBlockProps) {
   return (
-  <Row>
+  <Row style={{ height: '15rem', overflow: 'auto' }}>
     <Col xs={24} md={{span: 12, offset: 6}}>
-      <Table dataSource={getTableData(data)} columns={columns} pagination={false} />
+      <Table dataSource={dataSource} columns={columns} pagination={false} />
     </Col>
   </Row>
     )

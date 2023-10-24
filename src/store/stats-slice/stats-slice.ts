@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchDataStats } from "./stats-thunk";
-import { DataStat, TestStats } from "../../types/stats";
+import { fetchDataStats, fetchTestStats } from "./stats-thunk";
+import { DataStat, TestsStat } from "../../types/stats";
 
 
 interface Status {
@@ -9,7 +9,7 @@ interface Status {
 }
 
 interface InitialState {
-  tests: TestStats[];
+  tests: TestsStat[];
   data: DataStat[];
   testsStatsStatus: Status;
   dataStatsStatus: Status;
@@ -28,7 +28,7 @@ export const statsSlice = createSlice({
   initialState,
   name: 'statsSlice',
   reducers: {
-    setTestsStats(state, {payload} : {payload: TestStats[]}) {
+    setTestsStats(state, {payload} : {payload: TestsStat[]}) {
       state.tests = payload;
     },
 
@@ -50,5 +50,19 @@ export const statsSlice = createSlice({
     .addCase(fetchDataStats.rejected, (state) => {
       state.dataStatsStatus.isLoading = false;
       state.dataStatsStatus.isError = true;
+    })
+
+    .addCase(fetchTestStats.fulfilled, (state, data) => {
+      state.tests = data.payload;
+      state.testsStatsStatus.isLoading = false;
+      state.testsStatsStatus.isError = false;
+    })
+    .addCase(fetchTestStats.pending, (state) => {
+      state.testsStatsStatus.isLoading = true;
+      state.testsStatsStatus.isError = false;
+    })
+    .addCase(fetchTestStats.rejected, (state) => {
+      state.testsStatsStatus.isLoading = false;
+      state.testsStatsStatus.isError = true;
     })
 })

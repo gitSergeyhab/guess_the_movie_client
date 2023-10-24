@@ -1,6 +1,7 @@
 import { CategoryName, OperationAction, OperationCategory, OperationName } from "../../const/admin-const"
 import { IAdminPageButtonsData } from "../../types/admin-type";
 import { AdminButtonGroup } from "../admin-button-group/admin-button-group";
+import { StatsBlockTests } from "../stats-block-tests/stats-block-tests";
 
 
 
@@ -69,6 +70,7 @@ export function AdminTestsBlock () {
   return (
     <div>
       <h1>Тесты</h1>
+      <StatsBlockTests/>
       <AdminButtonGroup name={CategoryName.Rus} key={CategoryName.Rus} buttonsData={RussianButtonsData}/>
       <AdminButtonGroup name={CategoryName.Ussr} key={CategoryName.Ussr} buttonsData={UssrButtonsData}/>
       <AdminButtonGroup name={CategoryName.World} key={CategoryName.World} buttonsData={WorldButtonsData}/>
