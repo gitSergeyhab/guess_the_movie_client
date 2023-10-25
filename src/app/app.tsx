@@ -9,6 +9,7 @@ import { Login } from "../pages/login/login";
 import { Registration } from "../pages/registration/registration";
 import { AdminPage } from "../pages/admin-page/admin-page";
 import { SinglePlayerGamePage } from "../pages/single-player-game-page/single-player-game-page";
+import { NoPage } from "../pages/__no-page/no-page";
 
 const { Footer, Sider } = Layout;
 export function App () {
@@ -26,10 +27,10 @@ export function App () {
     <Layout className="main-layout">
       <TopHeader/>
       <Layout className="main-layout" >
-        <Sider collapsible defaultCollapsed collapsedWidth={40} width={220}>
+        {/* <Sider collapsible defaultCollapsed collapsedWidth={40} width={220}>
           <div className="demo-logo-vertical" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" /* items={items} *//>
-        </Sider>
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" />
+        </Sider> */}
         <Layout>
           <Routes>
             <Route path={AppRoute.Main} element={<Main />}/>
@@ -38,6 +39,8 @@ export function App () {
             <Route path={AppRoute.Registration} element={<Registration />}/>
             <Route path={AppRoute.Exit} element={<Navigate to={AppRoute.Main} replace />}/>
             <Route path={AppRoute.Admin} element={<AdminPage />}/>
+
+            <Route path='no-page' element={< NoPage />}/>
             <Route path="*" element={<Page404 />} />
           </Routes>
           {/* <Footer style={{ textAlign: 'center', height: '20px' }}>Ant Design ©2023 Created by Ant UED</Footer> */}
