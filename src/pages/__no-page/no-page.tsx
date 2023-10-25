@@ -3,6 +3,7 @@ import { NoPageButton } from "./__no-page-components/button";
 import { Input } from "./__no-page-components/input";
 import { NoPageSlider } from './__no-page-components/slider';
 import './no-page.scss'
+import { NoPageRangeSlider } from './__no-page-components/range-slider';
 
 export function NoPage() {
 
@@ -18,6 +19,7 @@ export function NoPage() {
       <Input type='number' isValid/>
       <NoPageButton isPressed onClick={handleBtnClick}/>
       <NoPageSlider/>
+      <NoPageRangeSlider/>
     </>
   )
 }

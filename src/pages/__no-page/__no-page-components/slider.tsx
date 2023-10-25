@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 
 
-
-
 const calculatePosition = (x: number, evt: MouseEvent|TouchEvent, right: HTMLDivElement|null) => {
   if (!right) {
     return 0;
