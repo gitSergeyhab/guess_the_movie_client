@@ -23,6 +23,7 @@ export interface QuestionVariant {
   slogan?:   string;
 }
 
+
 export interface Question extends QuestionVariant {
   id?:       number | string;
 }
