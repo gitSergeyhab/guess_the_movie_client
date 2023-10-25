@@ -15,6 +15,7 @@ interface GetClasses {
   isChosen:boolean;
   id: string|number;
 }
+
 const getAdditionClass = ({id, rightAnswer, isChosen}: GetClasses) => {
   const isRightVariant = String(rightAnswer) === String(id);
   if (rightAnswer === null ) {
@@ -50,6 +51,7 @@ export function VariantButton ({variant, testId}: VariantButtonProps) {
   return (
     <li>
       <button
+        title={variant.enName || undefined}
         type="button"
         className={btnClasses}
         onClick={handleButtonClick}
